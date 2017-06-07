@@ -60,21 +60,21 @@ avg_x = avg_x/n
 avg_y = avg_y/n
 avg_z = avg_z/n
 
+draw.text((x,top), "Beginning data collection", font=font, fill=255)
+disp.image(image)
+disp.display()
+sleep(2)
+
 while True:
     draw.rectangle((0,0,width,height), outline=0, fill=0)
 
-    #accel_data = sensor.get_accel_data(True)
-    print("Got data")
-    #curTime = time.clock()
-    #f.write(str(accel_data['x']-avg_x)+','+str(accel_data['y']-avg_y)+','+str(accel_data['z']-avg_z)+','+str(curTime)+'\n')
+    accel_data = sensor.get_accel_data(True)
+    curTime = time.clock()
+    f.write(str(accel_data['x']-avg_x)+','+str(accel_data['y']-avg_y)+','+str(accel_data['z']-avg_z)+','+str(curTime)+'\n')
 
     draw.text((x,top), "Current data", font=font, fill=255)
-    #draw.text((x, top+16), "Accel Z: "+str(accel_data['z']-avg_z), font=font, fill=255)
+    draw.text((x, top+16), "Accel Z: "+str(accel_data['z']-avg_z), font=font, fill=255)
     disp.image(image)
     disp.display()
-    print("Displayed")
-
-    #f.write(str(accel_data['x']-avg_x)+','+str(accel_data['y']-avg_y)+','+str(accel_data['z']-avg_z)+','+str(curTime)+'\n')
-    print("Wrote File")
 
     time.sleep(.1)

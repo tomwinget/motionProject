@@ -89,14 +89,14 @@ while True:
     draw.rectangle((0,0,width,height), outline=0, fill=0)
 
     # Shell scripts for now
-    #cmd = "hostname -I | cut -d\' \' -f1"
-    #IP = subprocess.check_output(cmd, shell = True)
-    #cmd = "top -bn1 | grep load | awk '{printf \"CPU Load: %.2f\", $(NF-2)}'"
-    #CPU = subprocess.check_output(cmd, shell = True)
-    #cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%sMB %.2f%%\", $3,$2,$3*100/$2 }'"
-    #MemUse = subprocess.check_output(cmd, shell = True)
-    #cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3, $2, $5}'"
-    #Disk = subprocess.check_output(cmd, shell = True)
+    cmd = "hostname -I | cut -d\' \' -f1"
+    IP = subprocess.check_output(cmd, shell = True)
+    cmd = "top -bn1 | grep load | awk '{printf \"CPU Load: %.2f\", $(NF-2)}'"
+    CPU = subprocess.check_output(cmd, shell = True)
+    cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%sMB %.2f%%\", $3,$2,$3*100/$2 }'"
+    MemUse = subprocess.check_output(cmd, shell = True)
+    cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3, $2, $5}'"
+    Disk = subprocess.check_output(cmd, shell = True)
 
     # Accelerometer data
     accel_data = sensor.get_accel_data(True)
@@ -111,12 +111,12 @@ while True:
     #f.write(str(current_time)+','+str(accel_x-avg_x)+','+str(accel_y-avg_y)+','+str(accel_z-avg_z)+','+str(temp)+'\n')
 
     # Write two lines of text
-    #draw.text((x, top), "IP: " + str(IP), font = font, fill=255)
-    #draw.text((x, top+8), str(CPU), font = font, fill=255)
-    #draw.text((x, top+16), str(MemUse), font = font, fill=255)
-    #draw.text((x, top+24), str(Disk), font = font, fill=255)
-    #draw.text((x, top+32), "A. Temp: "+temp, font = font, fill=255)
-    draw.text((x, top), "A. z: "+str(accel_z), font = font, fill=255)
+    draw.text((x, top), "IP: " + str(IP), font = font, fill=255)
+    draw.text((x, top+8), str(CPU), font = font, fill=255)
+    draw.text((x, top+16), str(MemUse), font = font, fill=255)
+    draw.text((x, top+24), str(Disk), font = font, fill=255)
+    draw.text((x, top+32), "A. Temp: "+temp, font = font, fill=255)
+    draw.text((x, top+64), "A. z: "+str(accel_z)[:4], font = font, fill=255)
     #draw.text((x, top+40), "A. x: "+str(accel_x)[:4]+" y: "+str(accel_y)[:4]+" z: "+str(accel_z)[:4], font = font, fill=255)
 
     disp.image(image)
