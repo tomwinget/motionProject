@@ -23,7 +23,7 @@ avg_x = 0
 avg_y = 0
 avg_z = 0
 
-n = 10
+n = 100
 
 disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST, i2c_address=0x3C)
 
@@ -97,9 +97,9 @@ while True:
     f.write(str(current_time)+','+str(accel_data['x']-avg_x)+','+str(accel_data['y']-avg_y)+','+str(accel_data['z']-avg_z)+'\n')
     
     draw.text((x,top), "Current Data: ", font=font, fill=255)
-    draw.text((x,top+8), "Accel x: "+str(accel_data['x']-avg_x)[:8], font=font, fill=255)
-    draw.text((x,top+16), "Accel y: "+str(accel_data['y']-avg_y)[:8], font=font, fill=255)
-    draw.text((x,top+24), "Accel z: "+str(accel_data['z']-avg_z)[:8], font=font, fill=255)
+    draw.text((x,top+16), "Accel x: "+str(accel_data['x']-avg_x)[:8], font=font, fill=255)
+    draw.text((x,top+24), "Accel y: "+str(accel_data['y']-avg_y)[:8], font=font, fill=255)
+    draw.text((x,top+32), "Accel z: "+str(accel_data['z']-avg_z)[:8], font=font, fill=255)
 
     disp.image(image)
     disp.display()
